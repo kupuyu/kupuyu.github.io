@@ -1,0 +1,442 @@
+.forest-hero {
+  --p: 0;
+  position: relative;
+  height: 200svh;
+  background: #0a1b10;
+  isolation: isolate;
+}
+
+.forest-hero__sticky {
+  position: sticky;
+  top: 0;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.forest-hero__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.forest-hero__plate {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 84% 50%;
+  user-select: none;
+}
+
+.forest-hero__wash {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(5, 18, 11, 0.62) 0%, rgba(5, 18, 11, 0.4) 26%, rgba(5, 18, 11, 0.08) 56%, transparent 72%),
+    linear-gradient(0deg, rgba(4, 15, 9, 0.62) 0%, rgba(4, 15, 9, 0.18) 22%, transparent 44%),
+    linear-gradient(180deg, rgba(4, 15, 9, 0.34) 0%, transparent 20%);
+}
+
+.forest-hero__inner {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  align-items: flex-start;
+  pointer-events: none;
+}
+
+.forest-hero__copy {
+  width: min(720px, 52vw);
+  margin-top: clamp(150px, 20vh, 218px);
+  opacity: clamp(0, calc(1 - var(--p) * 1.05), 1);
+  transform: translateY(calc(var(--p) * -2vh));
+  will-change: opacity, transform;
+}
+
+.forest-hero__kicker {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 30px;
+  color: rgba(247, 241, 219, 0.88);
+  font-family: var(--ui);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+}
+
+.forest-hero__kicker i {
+  padding-left: 13px;
+  border-left: 1px solid rgba(247, 241, 219, 0.26);
+  color: rgba(247, 241, 219, 0.5);
+  font-size: 9px;
+  font-style: normal;
+  letter-spacing: 0.2em;
+}
+
+.forest-hero__kicker-line {
+  display: inline-block;
+  width: 36px;
+  height: 1px;
+  background: rgba(247, 241, 219, 0.58);
+}
+
+.forest-hero__title {
+  margin: 0;
+  color: #f8eeda;
+  font-family: var(--display);
+  font-size: clamp(58px, 4.8vw, 92px);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 1.06;
+  text-shadow: 0 5px 30px rgba(6, 24, 12, 0.4);
+}
+
+.forest-hero__title > span {
+  display: block;
+}
+
+.forest-hero__title > span:nth-child(2) {
+  margin-left: 0.1em;
+}
+
+.forest-hero__dot {
+  display: inline-block;
+  width: 0.16em;
+  height: 0.16em;
+  margin-left: 0.1em;
+  border-radius: 50%;
+  background: #ddc179;
+  vertical-align: 0.06em;
+  box-shadow: 0 2px 8px rgba(80, 58, 24, 0.28);
+}
+
+.forest-hero__sub {
+  margin: 30px 0 0;
+  color: rgba(248, 240, 221, 0.85);
+  font-family: var(--serif);
+  font-size: clamp(14px, 1vw, 17px);
+  letter-spacing: 0.1em;
+  line-height: 1.8;
+}
+
+.forest-hero__sub-en {
+  margin: 10px 0 0;
+  color: rgba(248, 240, 221, 0.5);
+  font-family: var(--ui);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+}
+
+.forest-hero__foot {
+  position: absolute;
+  right: var(--gutter);
+  bottom: clamp(28px, 4.4vh, 48px);
+  left: var(--gutter);
+  z-index: 32;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: end;
+  color: #f7f1de;
+  opacity: calc(1 - var(--p) * 1.5);
+}
+
+.forest-hero__scroll {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  width: max-content;
+  color: #f7f1de;
+  font-family: var(--ui);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-decoration: none;
+}
+
+.forest-hero__scroll small {
+  display: block;
+  margin-top: 4px;
+  color: rgba(247, 241, 222, 0.48);
+  font-family: var(--serif);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.forest-hero__mouse {
+  position: relative;
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  width: 34px;
+  height: 52px;
+  padding-top: 8px;
+  border: 1px solid rgba(247, 241, 222, 0.58);
+  border-radius: 18px;
+}
+
+.forest-hero__mouse i {
+  display: block;
+  width: 3px;
+  height: 8px;
+  border-radius: 2px;
+  background: rgba(247, 241, 222, 0.8);
+  animation: forest-scroll 2.2s ease-in-out infinite;
+}
+
+.forest-hero__scroll > span:nth-child(2) {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.forest-hero__meta,
+.forest-hero__note {
+  margin: 0;
+  color: rgba(247, 241, 222, 0.62);
+  font-family: var(--ui);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  line-height: 1.7;
+}
+
+.forest-hero__meta {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.forest-hero__meta span:first-child {
+  color: rgba(247, 241, 222, 0.9);
+}
+
+.forest-hero__note {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  text-align: right;
+}
+
+.forest-hero__note span:first-child {
+  color: rgba(247, 241, 222, 0.88);
+}
+
+/* Paper-cut depth layers */
+/* Keep each transparent SVG only as large as its painted edge. Full-screen
+   layers are then cheap to composite on every scroll frame. */
+.forest-foliage--canopy {
+  inset: 0 0 auto 0;
+  width: 100%;
+  height: clamp(150px, 22vh, 240px);
+}
+
+.forest-foliage--left {
+  inset: 0 auto 0 0;
+  width: clamp(140px, 30vw, 580px);
+  height: 100%;
+}
+
+.forest-foliage--right {
+  inset: 0 0 0 auto;
+  width: clamp(140px, 30vw, 580px);
+  height: 100%;
+}
+
+.forest-foliage {
+  position: absolute;
+  inset: 0;
+  z-index: 8;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.forest-foliage--mist {
+  z-index: 3;
+  opacity: clamp(0, calc((0.92 - var(--p)) * 0.9), 0.78);
+}
+
+.forest-foliage--canopy {
+  z-index: 7;
+  opacity: clamp(0, calc(1 - var(--p) * 0.92), 1);
+  transform: translateY(calc(var(--p) * -8vh));
+}
+
+.forest-foliage--left {
+  z-index: 10;
+  opacity: clamp(0, calc(1 - var(--p) * 1.14), 1);
+  transform: translateX(calc(var(--p) * -11vw)) rotate(calc(var(--p) * -1.5deg));
+}
+
+.forest-foliage--right {
+  z-index: 10;
+  opacity: clamp(0, calc(1 - var(--p) * 1.14), 1);
+  transform: translateX(calc(var(--p) * 11vw)) rotate(calc(var(--p) * 1.5deg));
+}
+
+.forest-foliage--floor {
+  z-index: 12;
+  opacity: clamp(0, calc(1 - var(--p) * 1.22), 1);
+  transform: translateY(calc(var(--p) * 12vh));
+}
+
+.forest-foliage--bloom {
+  z-index: 14;
+  opacity: calc(var(--p) * 0.8);
+  transform: translateY(calc(var(--p) * -22px));
+}
+
+.forest-hero__dust {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.forest-hero__dust i {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(248, 232, 169, 0.8);
+  box-shadow: 0 0 12px rgba(248, 222, 132, 0.8);
+  animation: forest-dust 6s ease-in-out infinite alternate;
+}
+
+.forest-hero__dust i:nth-child(1) { top: 25%; left: 62%; animation-delay: -1s; }
+.forest-hero__dust i:nth-child(2) { top: 47%; left: 38%; animation-delay: -3s; width: 3px; height: 3px; }
+.forest-hero__dust i:nth-child(3) { top: 63%; left: 72%; animation-delay: -2s; }
+.forest-hero__dust i:nth-child(4) { top: 17%; left: 48%; animation-delay: -5s; width: 2px; height: 2px; }
+.forest-hero__dust i:nth-child(5) { top: 54%; left: 86%; animation-delay: -4s; width: 3px; height: 3px; }
+.forest-hero__dust i:nth-child(6) { top: 72%; left: 30%; animation-delay: -2.5s; width: 2px; height: 2px; }
+
+@keyframes forest-scroll {
+  0%, 100% { transform: translateY(0); opacity: 0.7; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+
+@keyframes forest-dust {
+  0% { transform: translate3d(0, 0, 0); opacity: 0.18; }
+  100% { transform: translate3d(12px, -18px, 0); opacity: 0.85; }
+}
+
+/* The next sheet slides over the pinned forest only after the effect completes. */
+.forest-hero + .about {
+  position: relative;
+  z-index: 24;
+  margin-top: -100svh;
+}
+
+@media (max-width: 1300px) {
+  .forest-hero__copy { width: min(680px, 58vw); }
+  .forest-hero__title { font-size: clamp(54px, 5.4vw, 82px); }
+  .forest-hero__plate { object-position: 82% 50%; }
+  .forest-hero__copy { width: min(680px, 58vw); margin-top: 19vh; }
+  .forest-hero__title { font-size: clamp(54px, 5.4vw, 82px); }
+}
+
+@media (max-width: 980px) {
+  .forest-hero__plate { object-position: 78% 46%; }
+  .forest-hero__copy { width: 74vw; margin-top: 17vh; }
+  .forest-hero__title { font-size: clamp(50px, 7.4vw, 72px); }
+  .forest-hero__title > span:nth-child(2) { margin-left: 0.1em; }
+  .forest-hero__kicker { margin-bottom: 22px; }
+  .forest-hero__sub { margin-top: 26px; }
+  .forest-hero__note { display: none; }
+  .forest-hero__foot { grid-template-columns: 1fr auto; }
+  .forest-hero__meta { justify-self: end; }
+}
+
+@media (max-width: 720px) {
+  .forest-hero__plate { object-position: 64% 45%; }
+  .forest-hero__copy { width: 88vw; margin-top: 15vh; }
+  .forest-hero__title { font-size: clamp(40px, 12vw, 52px); line-height: 1.1; }
+  .forest-hero__title > span:nth-child(2) { margin-left: 0; }
+  .forest-hero__kicker { gap: 8px; margin-bottom: 18px; font-size: 9px; letter-spacing: 0.08em; }
+  .forest-hero__kicker i { display: none; }
+  .forest-hero__kicker-line { width: 20px; }
+  .forest-hero__sub { max-width: 22em; margin-top: 22px; font-size: 13px; letter-spacing: 0.04em; }
+  .forest-hero__sub-en { font-size: 8px; letter-spacing: 0.14em; }
+  .forest-hero__foot { right: 22px; bottom: 24px; left: 22px; grid-template-columns: 1fr; }
+  .forest-hero__meta { display: none; }
+  .forest-hero__scroll small { display: none; }
+  .forest-hero__wash {
+    background:
+      linear-gradient(90deg, rgba(5, 18, 11, 0.82) 0%, rgba(5, 18, 11, 0.56) 44%, rgba(5, 18, 11, 0.18) 82%),
+      linear-gradient(0deg, rgba(4, 15, 9, 0.74) 0%, transparent 42%),
+      linear-gradient(180deg, rgba(4, 15, 9, 0.4) 0%, transparent 24%);
+  }
+}
+
+@media (max-width: 420px) {
+  .forest-hero__plate { object-position: 62% 46%; }
+  .forest-hero__copy { margin-top: 13vh; }
+  .forest-hero__title { font-size: clamp(38px, 11.8vw, 48px); }
+  .forest-hero__sub { max-width: 17em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forest-hero {
+    height: 100svh;
+  }
+
+  .forest-hero + .about {
+    margin-top: 0;
+  }
+
+  .forest-hero__copy,
+  .forest-hero__foot {
+    opacity: 1;
+    transform: none;
+  }
+
+  .forest-foliage {
+    transform: none !important;
+  }
+
+  .forest-foliage--canopy,
+  .forest-foliage--left,
+  .forest-foliage--right,
+  .forest-foliage--floor {
+    opacity: 0.5;
+  }
+
+  .forest-foliage--mist {
+    opacity: 0.25;
+  }
+
+  .forest-foliage--bloom {
+    opacity: 0.25;
+  }
+
+  .forest-hero__dust i,
+  .forest-hero__mouse i {
+    animation: none;
+  }
+}
+
+@media print {
+  .forest-hero {
+    height: 100vh;
+  }
+
+  .forest-hero__sticky {
+    position: relative;
+  }
+
+  .forest-hero + .about {
+    margin-top: 0;
+  }
+
+  .forest-foliage,
+  .forest-hero__dust,
+  .forest-hero__foot {
+    display: none;
+  }
+}
+

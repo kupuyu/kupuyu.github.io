@@ -1,0 +1,16 @@
+node_modules/
+dist/
+qa/
+design/
+.pnpm-store/
+*.log
+*.zip
+qa-recovery-hero.png
+.edge-*/
+.DS_Store
+
+.tmp/
+.cache/
+.pnpm-home/
+.env
+.env.*
