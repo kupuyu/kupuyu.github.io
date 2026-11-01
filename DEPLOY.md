@@ -2,11 +2,35 @@
 
 这是一个纯静态的前端项目，没有数据库和服务器端程序。构建后只有 HTML、CSS、JS、图片和视频，最适合放在静态托管平台。
 
-**推荐路线：GitHub 保存源码 + Vercel 自动构建。** 免费、自动 HTTPS，每次改完 push 到 GitHub 就会自动更新网站，不需要自己维护服务器。
+**推荐路线：GitHub Pages 用户主页。** 免费、自动 HTTPS，仓库名使用 `kupuyu.github.io` 后，网站根地址就是 `https://kupuyu.github.io/`，不需要改项目里的 `/images/...` 路径。项目已带 `.github/workflows/deploy.yml` 和 `public/.nojekyll`。
+
+### 1. 把仓库名改成用户主页仓库
+
+在 GitHub 打开当前仓库 `kupuyu/peng-yukang-portfolio`：
+
+1. 进入 `Settings → General`。
+2. 在 `Repository name` 把名字改成 `kupuyu.github.io`，点 `Rename`。
+3. 回到本地项目，把远程地址改成新仓库：
+
+```bash
+git remote set-url origin https://github.com/kupuyu/kupuyu.github.io.git
+```
+
+> 仓库必须是 **Public**。GitHub Pages 免费站点需要公开仓库（除非使用付费计划）。
+
+### 2. 开启 GitHub Actions 部署
+
+1. 进入仓库 `Settings → Pages`。
+2. `Build and deployment → Source` 选择 **GitHub Actions**。
+3. 在 GitHub Desktop 里提交并 push 当前改动。
+4. 打开仓库的 `Actions` 标签，等待 `Deploy portfolio to GitHub Pages` 变成绿色。
+5. 访问 `https://kupuyu.github.io/`。
+
+以后每次改完代码，只要 push 到 `main`，Actions 会自动重新构建和发布。
 
 ---
 
-## 方案一：GitHub + Vercel（推荐）
+## 备选：GitHub + Vercel
 
 ### 1. 把项目放到 GitHub
 
