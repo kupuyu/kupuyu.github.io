@@ -40,6 +40,9 @@ jobs:
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          # 如果仓库还没启用 Pages，允许工作流自动创建/启用 Pages 站点。
+          enablement: true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
