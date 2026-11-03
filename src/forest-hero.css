@@ -19,15 +19,22 @@
   overflow: hidden;
 }
 
-.forest-hero__plate {
+.forest-hero__video {
   position: absolute;
   inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 84% 50%;
+  object-position: 54% 50%;
+  background: #0a1b10;
+  pointer-events: none;
   user-select: none;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
+
+
 
 .forest-hero__wash {
   position: absolute;
@@ -62,12 +69,13 @@
   align-items: center;
   gap: 12px;
   margin: 0 0 30px;
-  color: rgba(247, 241, 219, 0.88);
+  color: rgba(247, 241, 219, 0.92);
   font-family: var(--ui);
   font-size: 11px;
   font-weight: 400;
   letter-spacing: 0.14em;
   line-height: 1.5;
+  text-shadow: 0 2px 16px rgba(4, 15, 9, 0.55);
 }
 
 .forest-hero__kicker i {
@@ -123,6 +131,7 @@
   font-size: clamp(14px, 1vw, 17px);
   letter-spacing: 0.1em;
   line-height: 1.8;
+  text-shadow: 0 2px 18px rgba(4, 15, 9, 0.6);
 }
 
 .forest-hero__sub-en {
@@ -333,15 +342,13 @@
 }
 
 @media (max-width: 1300px) {
-  .forest-hero__copy { width: min(680px, 58vw); }
-  .forest-hero__title { font-size: clamp(54px, 5.4vw, 82px); }
-  .forest-hero__plate { object-position: 82% 50%; }
+  .forest-hero__video { object-position: 52% 50%; }
   .forest-hero__copy { width: min(680px, 58vw); margin-top: 19vh; }
   .forest-hero__title { font-size: clamp(54px, 5.4vw, 82px); }
 }
 
 @media (max-width: 980px) {
-  .forest-hero__plate { object-position: 78% 46%; }
+  .forest-hero__video { object-position: 50% 48%; }
   .forest-hero__copy { width: 74vw; margin-top: 17vh; }
   .forest-hero__title { font-size: clamp(50px, 7.4vw, 72px); }
   .forest-hero__title > span:nth-child(2) { margin-left: 0.1em; }
@@ -353,7 +360,7 @@
 }
 
 @media (max-width: 720px) {
-  .forest-hero__plate { object-position: 64% 45%; }
+  .forest-hero__video { object-position: 28% 46%; }
   .forest-hero__copy { width: 88vw; margin-top: 15vh; }
   .forest-hero__title { font-size: clamp(40px, 12vw, 52px); line-height: 1.1; }
   .forest-hero__title > span:nth-child(2) { margin-left: 0; }
@@ -374,7 +381,7 @@
 }
 
 @media (max-width: 420px) {
-  .forest-hero__plate { object-position: 62% 46%; }
+  .forest-hero__video { object-position: 25% 46%; }
   .forest-hero__copy { margin-top: 13vh; }
   .forest-hero__title { font-size: clamp(38px, 11.8vw, 48px); }
   .forest-hero__sub { max-width: 17em; }
@@ -434,6 +441,7 @@
   }
 
   .forest-foliage,
+  .forest-hero__video,
   .forest-hero__dust,
   .forest-hero__foot {
     display: none;

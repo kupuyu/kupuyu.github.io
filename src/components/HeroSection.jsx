@@ -3,6 +3,7 @@ import ForestFoliageLayer from './ForestFoliage.jsx';
 
 export default function HeroSection() {
   const sectionRef = useRef(null);
+  const videoRef = useRef(null);
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -77,23 +78,74 @@ export default function HeroSection() {
     };
   }, []);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    const video = videoRef.current;
+    if (!section || !video) return undefined;
+
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let inView = true;
+
+    const play = () => {
+      if (reduceMotion.matches || document.hidden || !inView) return;
+      const promise = video.play();
+      if (promise) promise.catch(() => {});
+    };
+
+    const pause = () => video.pause();
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inView = entry.isIntersecting;
+        if (inView) play();
+        else pause();
+      },
+      { threshold: 0.01 },
+    );
+
+    const syncPlayback = () => {
+      if (document.hidden || reduceMotion.matches) pause();
+      else play();
+    };
+
+    observer.observe(section);
+    document.addEventListener('visibilitychange', syncPlayback);
+    reduceMotion.addEventListener?.('change', syncPlayback);
+    play();
+
+    return () => {
+      observer.disconnect();
+      document.removeEventListener('visibilitychange', syncPlayback);
+      reduceMotion.removeEventListener?.('change', syncPlayback);
+      video.pause();
+    };
+  }, []);
+
   return (
     <section className="forest-hero" id="top" ref={sectionRef}>
       <div className="forest-hero__sticky">
         <div className="forest-hero__media">
-          <img
-            className="forest-hero__plate"
-            src="/images/generated/forest/hero-forest.jpg"
-            alt="纸雕森林里，戴绿帽的男孩和白兔坐在溪边岩石上，远处有一座石桥。"
-            width="2400"
-            height="1085"
-            fetchPriority="high"
-            draggable="false"
+          <video
+            ref={videoRef}
+            className="forest-hero__video"
+            src="/videos/hero-water.mp4"
+            poster="/images/generated/forest/hero-water-poster.jpg"
+            width="1920"
+            height="1080"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            tabIndex={-1}
+            disablePictureInPicture
+            aria-hidden="true"
           />
           <div className="forest-hero__wash" aria-hidden="true" />
           <ForestFoliageLayer layer="canopy" />
           <ForestFoliageLayer layer="left" />
           <ForestFoliageLayer layer="right" />
+          <ForestFoliageLayer layer="floor" />
           <div className="forest-hero__dust" aria-hidden="true">
             {[0, 1, 2, 3, 4, 5].map((item) => <i key={item} />)}
           </div>
